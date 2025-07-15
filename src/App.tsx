@@ -6,9 +6,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src='https://ca.slack-edge.com/T0CNUGMGT-U079Q2868F4-7838f3f36543-512' className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+          2025 Internship Api Listing App
         </p>
         <a
           className="App-link"
