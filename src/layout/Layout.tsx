@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import styled from 'styled-components';
+import { ThemeType, useTheme } from './layout.context';
 
 const LayoutContainer = styled.div`
   display: flex;
@@ -9,9 +10,14 @@ const LayoutContainer = styled.div`
   min-height: 100vh;
 `;
 
-const Body = styled.div`
+const Body = styled.div<{$theme?: ThemeType}>`
   flex: 1;
   padding: 2rem 1rem;
+
+  ${props => props.$theme === 'dark' && `
+    background-color: #282c34;
+    color: white;
+  `}
 `;
 
 interface LayoutProps {
@@ -19,10 +25,12 @@ interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps) => {
+  const { theme } = useTheme();
+
   return (
     <LayoutContainer>
       <Header />
-      <Body>
+      <Body $theme={theme}>
         {children}
       </Body>
       <Footer />

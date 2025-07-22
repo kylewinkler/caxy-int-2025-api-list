@@ -1,14 +1,14 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 import Layout from './layout/Layout';
+import { ThemeProvider } from './layout/layout.context';
 import Home from './pages/Home/Home';
 
 function App() {
   return (
-    <Layout>
-      <Home />
-    </Layout>
+    <ThemeProvider>
+      <Layout>
+        <Home />
+      </Layout>
+    </ThemeProvider>
   );
 }
 
