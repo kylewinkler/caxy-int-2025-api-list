@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { useTheme } from './layout.context';
 import Switch from "react-switch";
+import { routes } from '../router/routes';
+import { Link } from 'react-router-dom';
 
 const HeaderWrapper = styled.div`
   padding: 0.5rem 1rem;
@@ -12,17 +14,23 @@ const HeaderWrapper = styled.div`
   justify-content: space-between;
 `;
 
+const RouteContainer = styled.div`
+  display: flex;
+  
+  :not(:last-child) {
+    margin-right: 1rem;
+  }
+`;
+
 const Header = () => {
   const { theme, toggleTheme } = useTheme();
 
   return (
     <HeaderWrapper>
-      <div>
-        Links
-      </div>
-      <div>
-        <Switch onChange={toggleTheme} checked={theme === 'dark'} onColor='#282c34' />
-      </div>
+      <RouteContainer>
+        {routes.map((route, i) => <Link to={route.url} key={i}>{route.label}</Link>)}
+      </RouteContainer>
+      <Switch onChange={toggleTheme} checked={theme === 'dark'} onColor='#282c34' />
     </HeaderWrapper>
   )
 }
